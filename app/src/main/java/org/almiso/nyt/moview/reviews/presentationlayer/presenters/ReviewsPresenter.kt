@@ -57,9 +57,13 @@ open class ReviewsPresenter(view: IReviewsView, controller: IController) : Abstr
      */
     override fun onRefreshClicked() {
         data().clear()
+        putDataOnView()
         loadData()
     }
 
+    override fun onMoreClicked(item: Review) {
+
+    }
 
     /*
      * Protected methods

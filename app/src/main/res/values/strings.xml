@@ -1,6 +1,7 @@
 <resources>
     <!--common -->
     <string name="app_name">Movie reviews</string>
+    <string name="server_error">An error occurred</string>
 
 
     <!--reviews -->
