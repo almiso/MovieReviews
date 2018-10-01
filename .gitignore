@@ -8,3 +8,8 @@
 /build
 /captures
 .externalNativeBuild
+
+# Studio files
+.idea/
+*.iml
+*.log

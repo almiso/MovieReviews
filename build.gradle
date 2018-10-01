@@ -13,6 +13,13 @@ buildscript {
 
         VERSION_SUPPORT_LIBRARY = "28.0.0"
         VERSION_DAGGER = "2.13"
+
+        VERSION_RX_ANDROID = "1.2.1"
+        VERSION_RX_KOTLIN = "2.3.0"
+        VERSION_RETROFIT = "2.3.0"
+        VERSION_RETROFIT_CONVERTER_GSON = "2.3.0"
+
+        VERSION_GSON = "2.8.2"
     }
 
     repositories {
