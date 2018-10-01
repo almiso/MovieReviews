@@ -10,7 +10,6 @@ interface ReviewsService {
         const val BASE_URL = "http://api.nytimes.com/svc/movies/v2/"
     }
 
-
     @GET("reviews/all.json")
     fun loadReviews(): Observable<ReviewResponse>
 
