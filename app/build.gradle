@@ -33,6 +33,10 @@ dependencies {
     // Compatibility
     implementation("com.android.support:appcompat-v7:$VERSION_SUPPORT_LIBRARY")
 
+    // DI
+    implementation("com.google.dagger:dagger:$VERSION_DAGGER")
+    kapt("com.google.dagger:dagger-compiler:$VERSION_DAGGER")
+
     // Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
