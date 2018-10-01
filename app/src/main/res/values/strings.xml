@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Moviewreviews</string>
+    <!--common -->
+    <string name="app_name">Movie reviews</string>
+
+
+    <!--reviews -->
+    <string name="title_reviews">Reviews</string>
+
 </resources>
