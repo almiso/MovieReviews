@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.almiso.nyt.moview.reviews.R
+import org.almiso.nyt.moview.reviews.businesslayer.managers.ReviewsManager
 import org.almiso.nyt.moview.reviews.presentationlayer.presenters.ReviewsPresenter
 import org.almiso.nyt.moview.reviews.presentationlayer.views.implementations.ReviewView
+import javax.inject.Inject
 
 
 open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresenter.IController {
@@ -17,8 +19,19 @@ open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresen
 
 
     /*
+     * Fields
+     */
+    @Inject protected lateinit var reviewsManager: ReviewsManager
+
+
+    /*
      * Overrides
      */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        injector().inject(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layout = inflater.inflate(R.layout.view_reviews, container, false)
 
@@ -34,6 +47,6 @@ open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresen
      * Implemented methods
      */
     override fun loadData() {
-        Log.d(TAG, "Start loading")
+        reviewsManager.loadReviews()
     }
 }
