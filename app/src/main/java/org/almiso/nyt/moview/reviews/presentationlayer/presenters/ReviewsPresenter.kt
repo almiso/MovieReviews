@@ -7,6 +7,7 @@ import org.almiso.nyt.moview.reviews.presentationlayer.views.IReviewsView
 open class ReviewsPresenter(view: IReviewsView, controller: IController) : AbstractPresenter(), IReviewsView.IListener {
     interface IController {
         fun loadData()
+        fun openReview(review: Review)
     }
 
 
@@ -62,7 +63,7 @@ open class ReviewsPresenter(view: IReviewsView, controller: IController) : Abstr
     }
 
     override fun onMoreClicked(item: Review) {
-
+        getController().openReview(item)
     }
 
     /*

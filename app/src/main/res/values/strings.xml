@@ -6,5 +6,6 @@
 
     <!--reviews -->
     <string name="title_reviews">Reviews</string>
+    <string name="caption_read_more">Read more</string>
 
 </resources>

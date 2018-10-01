@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import org.almiso.nyt.moview.reviews.R
 import org.almiso.nyt.moview.reviews.businesslayer.managers.ReviewsManager
 import org.almiso.nyt.moview.reviews.businesslayer.managers.events.ReviewsEvent
+import org.almiso.nyt.moview.reviews.objects.Review
 import org.almiso.nyt.moview.reviews.presentationlayer.presenters.ReviewsPresenter
 import org.almiso.nyt.moview.reviews.presentationlayer.views.implementations.ReviewView
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
+import android.content.Intent
+import android.net.Uri
 
 
 open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresenter.IController {
@@ -51,6 +54,12 @@ open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresen
      */
     override fun loadData() {
         reviewsManager.loadReviews()
+    }
+
+    override fun openReview(review: Review) {
+        val url = review.link!!.url
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
 

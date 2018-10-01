@@ -46,6 +46,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-scalars:$VERSION_RETROFIT_CONVERTER_SCALARS")
     implementation("com.squareup.okhttp3:logging-interceptor:$VERSION_OK_HTTP_LOGGING")
 
+    // View
+    implementation("com.github.bumptech.glide:glide:$VERSION_GLIDE")
+    annotationProcessor("com.github.bumptech.glide:compiler:$VERSION_GLIDE")
+
     // Rx
     implementation("io.reactivex:rxandroid:$VERSION_RX_ANDROID")
     implementation("io.reactivex.rxjava2:rxkotlin:$VERSION_RX_KOTLIN")
