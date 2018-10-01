@@ -40,6 +40,9 @@ dependencies {
     // Network
     implementation("com.squareup.retrofit2:retrofit:$VERSION_RETROFIT")
     implementation("com.squareup.retrofit2:converter-gson:$VERSION_RETROFIT_CONVERTER_GSON")
+    implementation("com.squareup.retrofit2:adapter-rxjava:$VERSION_RETROFIT_ADAPTER")
+    implementation("com.squareup.retrofit2:converter-scalars:$VERSION_RETROFIT_CONVERTER_SCALARS")
+    implementation("com.squareup.okhttp3:logging-interceptor:$VERSION_OK_HTTP_LOGGING")
 
     // Rx
     implementation("io.reactivex:rxandroid:$VERSION_RX_ANDROID")

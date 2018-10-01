@@ -18,6 +18,9 @@ buildscript {
         VERSION_RX_KOTLIN = "2.3.0"
         VERSION_RETROFIT = "2.3.0"
         VERSION_RETROFIT_CONVERTER_GSON = "2.3.0"
+        VERSION_RETROFIT_CONVERTER_SCALARS = "2.1.0"
+        VERSION_RETROFIT_ADAPTER = "2.1.0"
+        VERSION_OK_HTTP_LOGGING = "3.8.0"
 
         VERSION_GSON = "2.8.2"
     }
