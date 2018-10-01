@@ -1,6 +1,7 @@
 package org.almiso.nyt.moview.reviews.presentationlayer.presenters
 
 import org.almiso.nyt.moview.reviews.objects.Review
+import org.almiso.nyt.moview.reviews.objects.ReviewResponse
 import org.almiso.nyt.moview.reviews.presentationlayer.views.IReviewsView
 
 open class ReviewsPresenter(view: IReviewsView, controller: IController) : AbstractPresenter(), IReviewsView.IListener {
@@ -31,7 +32,23 @@ open class ReviewsPresenter(view: IReviewsView, controller: IController) : Abstr
 
         if (data().isEmpty()) {
             loadData()
+        } else {
+            putDataOnView()
         }
+    }
+
+
+    /*
+     * Public methods
+     */
+    fun loadDataComplete(response: ReviewResponse) {
+        mData.clear()
+        mData.addAll(response.reviews!!)
+        putDataOnView()
+    }
+
+    fun loadDataFail() {
+        getView().showError()
     }
 
 
@@ -39,7 +56,8 @@ open class ReviewsPresenter(view: IReviewsView, controller: IController) : Abstr
      * Implemented methods
      */
     override fun onRefreshClicked() {
-
+        data().clear()
+        loadData()
     }
 
 
@@ -49,6 +67,10 @@ open class ReviewsPresenter(view: IReviewsView, controller: IController) : Abstr
     protected fun loadData() {
         getView().showProgress(true)
         getController().loadData()
+    }
+
+    protected fun putDataOnView() {
+        getView().setData(mData)
     }
 
     protected open fun data() = mData

@@ -4,7 +4,9 @@ import android.content.Context
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
+import android.util.Log
 import org.almiso.nyt.moview.reviews.R
+import org.almiso.nyt.moview.reviews.objects.Review
 import org.almiso.nyt.moview.reviews.presentationlayer.views.IReviewsView
 
 open class ReviewView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
@@ -38,5 +40,15 @@ open class ReviewView @JvmOverloads constructor(context: Context, attrs: Attribu
      */
     override fun showProgress(isVisible: Boolean) {
         mRefreshLayout.isRefreshing = isVisible
+    }
+
+    override fun showError() {
+
+    }
+
+    override fun setData(items: List<Review>) {
+        for (item in items) {
+            Log.d("ReviewView", "item: " + item.displayTitle)
+        }
     }
 }

@@ -50,6 +50,7 @@ dependencies {
 
     // Misc
     implementation("com.google.code.gson:gson:$VERSION_GSON")
+    implementation("org.greenrobot:eventbus:$VERSION_EVENT_BUS")
 
     // Tests
     testImplementation 'junit:junit:4.12'

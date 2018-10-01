@@ -7,6 +7,7 @@ import org.almiso.nyt.moview.reviews.businesslayer.di.DaggerDependenciesInjector
 import org.almiso.nyt.moview.reviews.businesslayer.di.DependenciesFactory
 import org.almiso.nyt.moview.reviews.businesslayer.di.DependenciesInjector
 import org.almiso.nyt.moview.reviews.presentationlayer.presenters.AbstractPresenter
+import org.greenrobot.eventbus.EventBus
 
 abstract class AbstractFragment<T : AbstractPresenter> : Fragment() {
     /*
@@ -22,12 +23,14 @@ abstract class AbstractFragment<T : AbstractPresenter> : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        EventBus.getDefault().register(this)
         presenter().start()
     }
 
     override fun onStop() {
         super.onStop()
 
+        EventBus.getDefault().unregister(this)
         presenter().stop()
     }
 

@@ -1,8 +1,11 @@
 package org.almiso.nyt.moview.reviews.businesslayer.managers
 
 import android.util.Log
+import org.almiso.nyt.moview.reviews.businesslayer.managers.events.AbstractEvent
+import org.almiso.nyt.moview.reviews.businesslayer.managers.events.ReviewsEvent
 import org.almiso.nyt.moview.reviews.businesslayer.network.ReviewsService
 import org.almiso.nyt.moview.reviews.objects.ReviewResponse
+import org.greenrobot.eventbus.EventBus
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -28,9 +31,17 @@ open class ReviewsManager(service: ReviewsService) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext { throwable -> Observable.error<ReviewResponse>(throwable) }
                 .subscribe(
-                        { response -> Log.d(TAG, "response: $response") },
-                        { error -> Log.d(TAG, "error: $error") },
+                        { response -> post(ReviewsEvent(AbstractEvent.SUCCESS, response)) },
+                        { error -> post(ReviewsEvent(AbstractEvent.ERROR, null, error)) },
                         { Log.d(TAG, "completed") }
                 )
+    }
+
+
+    /*
+     * Protected methods
+     */
+    protected fun post(event: AbstractEvent<*>) {
+        EventBus.getDefault().post(event)
     }
 }

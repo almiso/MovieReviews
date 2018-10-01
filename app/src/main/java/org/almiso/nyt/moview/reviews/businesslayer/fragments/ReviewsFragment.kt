@@ -1,13 +1,17 @@
 package org.almiso.nyt.moview.reviews.businesslayer.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.almiso.nyt.moview.reviews.R
 import org.almiso.nyt.moview.reviews.businesslayer.managers.ReviewsManager
+import org.almiso.nyt.moview.reviews.businesslayer.managers.events.ReviewsEvent
 import org.almiso.nyt.moview.reviews.presentationlayer.presenters.ReviewsPresenter
 import org.almiso.nyt.moview.reviews.presentationlayer.views.implementations.ReviewView
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
 
 
@@ -47,5 +51,18 @@ open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresen
      */
     override fun loadData() {
         reviewsManager.loadReviews()
+    }
+
+
+    /*
+     * Events
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onLoadGistComplete(event: ReviewsEvent) {
+        if (event.isSuccess()) {
+            presenter().loadDataComplete(event.data()!!)
+        } else {
+            presenter().loadDataFail()
+        }
     }
 }
