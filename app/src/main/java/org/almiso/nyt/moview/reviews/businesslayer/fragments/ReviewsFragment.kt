@@ -1,6 +1,7 @@
 package org.almiso.nyt.moview.reviews.businesslayer.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,5 +27,13 @@ open class ReviewsFragment : AbstractFragment<ReviewsPresenter>(), ReviewsPresen
         setPresenter(presenter)
 
         return layout
+    }
+
+
+    /*
+     * Implemented methods
+     */
+    override fun loadData() {
+        Log.d(TAG, "Start loading")
     }
 }

@@ -1,6 +1,7 @@
 package org.almiso.nyt.moview.reviews.presentationlayer.views.implementations
 
 import android.content.Context
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
 import org.almiso.nyt.moview.reviews.R
@@ -13,6 +14,7 @@ open class ReviewView @JvmOverloads constructor(context: Context, attrs: Attribu
      * Fields
      */
     protected lateinit var mToolbar: Toolbar
+    protected lateinit var mRefreshLayout: SwipeRefreshLayout
 
 
     /*
@@ -22,7 +24,19 @@ open class ReviewView @JvmOverloads constructor(context: Context, attrs: Attribu
         super.onFinishInflate()
 
         mToolbar = findViewById(R.id.toolbar)
+        mRefreshLayout = findViewById(R.id.swipe_refresh)
 
         mToolbar.title = resources.getString(R.string.title_reviews)
+        mRefreshLayout.setOnRefreshListener {
+            getListener().onRefreshClicked()
+        }
+    }
+
+
+    /*
+     * Implemented methods
+     */
+    override fun showProgress(isVisible: Boolean) {
+        mRefreshLayout.isRefreshing = isVisible
     }
 }
